@@ -1,5 +1,3 @@
-'use client';
-
 // pages/index.js
 import { useEffect } from 'react';
 import Link from 'next/link';
@@ -102,7 +100,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-
+      
       {/* Featured Projects Section */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4 md:px-6">
@@ -119,27 +117,27 @@ export default function Home() {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-fuchsia-500 mx-auto"></div>
             </div>
-
+            
             <div className="space-y-32">
               {featuredProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.title}
-                  {...project}
-                  index={index}
+                <ProjectCard 
+                  key={project.title} 
+                  {...project} 
+                  index={index} 
                 />
               ))}
             </div>
-
+            
             <div className="text-center mt-12">
-              <Link
-                href="/projects"
+              <Link 
+                href="/projects" 
                 className="px-6 py-3 border border-purple-400 rounded-lg text-purple-300 hover:bg-purple-500/10 transition-colors inline-flex items-center"
               >
                 View All Projects
               </Link>
             </div>
           </motion.div>
-
+          
           {/* Skills Section */}
           <motion.div
             animate={controls}
@@ -152,8 +150,8 @@ export default function Home() {
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-fuchsia-500 mx-auto"></div>
             </div>
-
-            <motion.div
+            
+            <motion.div 
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
               variants={staggerChildrenVariants}
             >
@@ -163,10 +161,10 @@ export default function Home() {
                 </motion.div>
               ))}
             </motion.div>
-
+            
             <div className="text-center mt-12">
-              <Link
-                href="/skills"
+              <Link 
+                href="/skills" 
                 className="px-6 py-3 border border-purple-400 rounded-lg text-purple-300 hover:bg-purple-500/10 transition-colors inline-flex items-center"
               >
                 Explore All Skills
@@ -175,7 +173,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
+      
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-b from-gray-900 to-purple-900/40">
         <div className="container mx-auto px-4 md:px-6">
@@ -185,8 +183,8 @@ export default function Home() {
               I&apos;m currently available for freelance work and exciting new opportunities.
               Let&apos;s create something amazing together!
             </p>
-            <Link
-              href="/contact"
+            <Link 
+              href="/contact" 
               className="px-8 py-4 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-lg font-medium inline-flex items-center hover:from-purple-700 hover:to-fuchsia-700 transition-all shadow-lg hover:shadow-purple-500/20"
             >
               Get in Touch
