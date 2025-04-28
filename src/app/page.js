@@ -40,7 +40,7 @@ const featuredSkills = [
   {
     title: "UI/UX Design",
     description: "Creating intuitive user experiences with focus on usability, aesthetics, and user-centered design.",
-    icon: Figma,
+    icon: Code,
     level: 85,
     color: "fuchsia"
   },

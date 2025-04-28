@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const SkillCard = ({ name, icon, level, category, description, index }) => {
+const SkillCard = ({ name, icon: Icon, level, category, description, index }) => {
   // Skill level visualization
   const skillLevels = [
     { level: 'Beginner', color: 'bg-purple-500/30' },
@@ -40,10 +40,10 @@ const SkillCard = ({ name, icon, level, category, description, index }) => {
       <div className="flex items-center mb-4">
         {/* Icon */}
         <div className="relative h-10 w-10 mr-3 flex-shrink-0 bg-purple-500/10 rounded-lg p-2">
-          {icon && (
+          {Icon && (
             <Image
-              src={icon}
-              alt={name}
+              src= "/"
+              alt= "Icon"
               width={40}
               height={40}
               className="object-contain"

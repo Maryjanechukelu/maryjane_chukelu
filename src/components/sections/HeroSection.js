@@ -122,7 +122,7 @@ const HeroSection = () => {
               </p>
             </motion.div>
             
-            <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 md:mb-0">
               <Button href="/projects" size="lg" icon={<ArrowRight size={18} />}>
                 View My Work
               </Button>
@@ -142,11 +142,12 @@ const HeroSection = () => {
             <div className="relative h-[500px] w-full">
               <div className="absolute inset-0 bg-gradient-to-b from-purple-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse"></div>
               <Image 
-                src="/images/hero-image.png" 
+                src="/proimg1.jpeg" 
                 alt="Developer" 
                 fill
                 priority
-                className="object-contain"
+                className="object-fit cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
               />
             </div>
           </motion.div>
@@ -155,7 +156,7 @@ const HeroSection = () => {
       
       {/* Scroll down indicator */}
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-purple-300"
+        className="hidden md:absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-purple-300"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 2 }}
