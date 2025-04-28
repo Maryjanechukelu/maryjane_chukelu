@@ -8,7 +8,7 @@ import AnimatedText from '../ui/AnimatedText';
 
 const HeroSection = () => {
   const bgRef = useRef(null);
-  
+
   // Parallax effect for background
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +16,11 @@ const HeroSection = () => {
       const scrollY = window.scrollY;
       bgRef.current.style.transform = `translateY(${scrollY * 0.2}px)`;
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,7 +32,7 @@ const HeroSection = () => {
       }
     }
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -44,14 +44,14 @@ const HeroSection = () => {
       }
     }
   };
-  
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background elements */}
       <div ref={bgRef} className="absolute inset-0 -z-10">
         {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900"></div>
-        
+
         {/* Abstract shape */}
         <div className="absolute top-0 right-0 w-full h-full opacity-30 -z-10">
           <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
@@ -69,11 +69,11 @@ const HeroSection = () => {
             </g>
           </svg>
         </div>
-        
+
         {/* Grid overlay */}
         <div className="absolute inset-0 bg-[url('/images/grid.svg')] bg-center opacity-10"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 pt-20 md:pt-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* Content */}
@@ -88,40 +88,40 @@ const HeroSection = () => {
                 <span className="animate-pulse mr-2">•</span> Full-Stack Developer
               </p>
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="mb-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                <AnimatedText 
-                  text="Crafting digital" 
-                  tag="span" 
-                  className="block" 
-                  animation="wave" 
-                  delay={0.5}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight space-y-2">
+                <AnimatedText
+                  text="Crafting digital"
+                  tag="span"
+                  className="block"
+                  speed={120}
+                  pause={2000}
                 />
-                <AnimatedText 
-                  text="experiences that" 
-                  tag="span" 
-                  className="block" 
-                  animation="wave" 
-                  delay={0.7}
+                <AnimatedText
+                  text="experiences that"
+                  tag="span"
+                  className="block"
+                  speed={120}
+                  pause={2000}
                 />
-                <AnimatedText 
-                  text="make an impact" 
-                  tag="span" 
-                  className="block bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text" 
-                  animation="wave" 
-                  delay={0.9}
+                <AnimatedText
+                  text="make an impact"
+                  tag="span"
+                  className="block bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text"
+                  speed={120}
+                  pause={2000}
                 />
               </h1>
             </motion.div>
-            
+
             <motion.div variants={itemVariants}>
               <p className="text-purple-100/70 text-lg mb-8 max-w-lg mx-auto lg:mx-0">
-                I&apos;m a passionate developer specializing in creating beautiful, functional, 
+                I&apos;m a passionate developer specializing in creating beautiful, functional,
                 and user-friendly web applications using cutting-edge technologies.
               </p>
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 md:mb-0">
               <Button href="/projects" size="lg" icon={<ArrowRight size={18} />}>
                 View My Work
@@ -131,7 +131,7 @@ const HeroSection = () => {
               </Button>
             </motion.div>
           </motion.div>
-          
+
           {/* Image/Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -140,22 +140,22 @@ const HeroSection = () => {
             className="hidden lg:block relative order-first lg:order-last"
           >
             <div className="relative h-[500px] w-full">
-              <div className="absolute inset-0 bg-gradient-to-b from-purple-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse"></div>
-              <Image 
-                src="/proimg1.jpeg" 
-                alt="Developer" 
-                fill
-                priority
-                className="object-fit cover rounded-lg shadow-lg transition-transform duration-500 hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
-              />
+              <div className="absolute inset-0 bg-gradient-to-b from-purple-600/20 to-transparent rounded-full blur-3xl -z-10 animate-pulse">
+                <Image
+                  src="/cybergirl1.jpg"
+                  alt="Developer"
+                  fill
+                  priority
+                  className="object-fit"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
       </div>
-      
+
       {/* Scroll down indicator */}
-      <motion.div 
+      <motion.div
         className="hidden md:absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-purple-300"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

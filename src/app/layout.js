@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Your Name | Portfolio',
+  title: 'Codechic | Portfolio',
   description: 'Personal portfolio showcasing my projects and skills',
 };
 

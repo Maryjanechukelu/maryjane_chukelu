@@ -1,116 +1,68 @@
 // components/ui/AnimatedText.js
-import { useEffect, useRef } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+"use client";
+
+import { useEffect, useState, useRef } from 'react';
 
 const AnimatedText = ({
     text,
     tag = 'span',
     className = '',
-    animation = 'wave', // wave, typewriter, fade, highlight
-    delay = 0,
-    duration = 0.5,
-    once = true,
-    staggerChildren = 0.03,
+    speed = 150,       // Typing speed (ms)
+    pause = 2000,      // Pause time before deleting (ms)
     ...props
 }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once });
-    const controls = useAnimation();
-
-    // Animations
-    const animations = {
-        wave: {
-            hidden: { opacity: 0, y: 20 },
-            visible: (i = 0) => ({
-                opacity: 1,
-                y: 0,
-                transition: {
-                    delay: delay + (staggerChildren * i),
-                    duration: duration,
-                    ease: [0.22, 1, 0.36, 1]
-                }
-            })
-        },
-        typewriter: {
-            hidden: { opacity: 0, x: -20 },
-            visible: (i = 0) => ({
-                opacity: 1,
-                x: 0,
-                transition: {
-                    delay: delay + (staggerChildren * i),
-                    duration: duration,
-                    ease: [0.22, 1, 0.36, 1]
-                }
-            })
-        },
-        fade: {
-            hidden: { opacity: 0 },
-            visible: (i = 0) => ({
-                opacity: 1,
-                transition: {
-                    delay: delay + (staggerChildren * i),
-                    duration: duration
-                }
-            })
-        },
-        highlight: {
-            hidden: { backgroundSize: '0% 100%' },
-            visible: () => ({
-                backgroundSize: '100% 100%',
-                transition: {
-                    delay,
-                    duration: duration * 2,
-                    ease: [0.22, 1, 0.36, 1]
-                }
-            })
-        }
-    };
+    const [displayedText, setDisplayedText] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [index, setIndex] = useState(0);
+    const mountedRef = useRef(true);
 
     useEffect(() => {
-        if (isInView) {
-            controls.start('visible');
+        mountedRef.current = true;
+
+        let timer;
+
+        if (!isDeleting && index < text.length) {
+            // Typing
+            timer = setTimeout(() => {
+                if (mountedRef.current) {
+                    setDisplayedText(prev => prev + text[index]);
+                    setIndex(prev => prev + 1);
+                }
+            }, speed);
+        } else if (isDeleting && index > 0) {
+            // Deleting
+            timer = setTimeout(() => {
+                if (mountedRef.current) {
+                    setDisplayedText(prev => prev.slice(0, -1));
+                    setIndex(prev => prev - 1);
+                }
+            }, speed / 2); // deleting is faster
+        } else if (index === text.length) {
+            // Pause after fully typed
+            timer = setTimeout(() => {
+                if (mountedRef.current) setIsDeleting(true);
+            }, pause);
+        } else if (index === 0 && isDeleting) {
+            // Restart typing
+            setIsDeleting(false);
         }
-    }, [isInView, controls]);
 
-    // For highlight animation
-    if (animation === 'highlight') {
-        return (
-            <motion.span
-                ref={ref}
-                className={`inline-block bg-gradient-to-r from-purple-500 to-pink-500 bg-no-repeat bg-left-bottom ${className}`}
-                style={{ backgroundSize: '0% 100%', backgroundPosition: '0 95%', padding: '0.1em 0' }}
-                initial="hidden"
-                animate={controls}
-                variants={animations.highlight}
-                {...props}
-            >
-                {text}
-            </motion.span>
-        );
-    }
+        return () => {
+            clearTimeout(timer);
+            mountedRef.current = false;
+        };
+    }, [text, index, isDeleting, speed, pause]);
 
-    // For other animations (character by character)
-    const Container = motion[tag];
-    const selectedAnimation = animations[animation];
+    // You used "tag" prop => dynamic container tag (like span, h1 etc.)
+    const Container = tag;
 
     return (
         <Container
-            ref={ref}
-            className={`inline-block ${className}`}
+            className={`inline-block whitespace-nowrap ${className}`}
             {...props}
         >
-            {text.split('').map((char, index) => (
-                <motion.span
-                    key={`${char}-${index}`}
-                    className="inline-block"
-                    custom={index}
-                    initial="hidden"
-                    animate={controls}
-                    variants={selectedAnimation}
-                >
-                    {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-            ))}
+            {displayedText}
+            <span className="animate-blink">|</span> {/* Blinking cursor */}
         </Container>
     );
 };

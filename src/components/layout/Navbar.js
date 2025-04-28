@@ -50,7 +50,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className="font-bold text-2xl bg-gradient-to-r from-purple-300 to-fuchsia-300 bg-clip-text text-transparent transition-all hover:from-fuchsia-300 hover:to-purple-300">
-              Portfolio
+              Codechic
             </span>
           </Link>
 
