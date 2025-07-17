@@ -116,7 +116,7 @@ export default function About() {
 
                             <motion.div variants={fadeInUp}>
                                 <p className="text-gray-300 mb-4">
-                                    I&apos;m a passionate full-stack developer with over 6 years of experience creating
+                                    I&apos;m a passionate full-stack developer with over 4 years of experience creating
                                     modern web applications. I specialize in building responsive, accessible, and
                                     performant web experiences using cutting-edge technologies.
                                 </p>
@@ -134,11 +134,11 @@ export default function About() {
                                 <div className="grid sm:grid-cols-2 gap-4 mb-8">
                                     <div>
                                         <h3 className="text-lg font-medium text-white mb-2">Education</h3>
-                                        <p className="text-gray-400">B.S. Computer Science<br />University of Technology, 2016</p>
+                                        <p className="text-gray-400">Software Engineering<br />ALX, Nairobi, Kenya.</p>
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-medium text-white mb-2">Location</h3>
-                                        <p className="text-gray-400">San Francisco, California<br />Available for remote work</p>
+                                        <p className="text-gray-400">F.C.T, Abuja, Nigeria<br />Available for remote roles.</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -187,36 +187,32 @@ export default function About() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8">
-                            <h2 className="text-2xl font-bold text-white mb-6">My Approach to Web Development</h2>
+                            <h2 className="text-2xl font-bold text-white mb-6">My Web Development Philosophy</h2>
 
                             <div className="grid md:grid-cols-3 gap-6 mb-8">
                                 <div>
-                                    <h3 className="text-purple-300 font-medium mb-2">User-Centered Design</h3>
+                                    <h3 className="text-purple-300 font-medium mb-2">Design with Purpose</h3>
                                     <p className="text-gray-300 text-sm">
-                                        I believe in creating websites that not only look beautiful but also provide
-                                        exceptional user experiences. Every design choice should serve the needs of the end user.
+                                        Great design goes beyond aesthetics — it’s about crafting intuitive, user-first experiences. Every interface I build is thoughtfully designed to serve the real needs of real people.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="text-purple-300 font-medium mb-2">Clean & Maintainable Code</h3>
+                                    <h3 className="text-purple-300 font-medium mb-2">Code that Grows with You</h3>
                                     <p className="text-gray-300 text-sm">
-                                        Writing clean, well-documented code is essential for long-term project success.
-                                        I focus on creating maintainable solutions that can evolve with your business.
+                                        I write clean, modular, and well-documented code — the kind that's easy to maintain, scale, and hand off. My focus is always on sustainable development that supports future growth.
                                     </p>
                                 </div>
                                 <div>
-                                    <h3 className="text-purple-300 font-medium mb-2">Continuous Learning</h3>
+                                    <h3 className="text-purple-300 font-medium mb-2">Always Evolving</h3>
                                     <p className="text-gray-300 text-sm">
-                                        The web development landscape is always changing. I&apos;m committed to staying current
-                                        with the latest technologies and best practices through continuous learning.
+                                        Technology never stands still, and neither do I. I'm deeply committed to sharpening my skills and staying ahead of the curve with modern tools, frameworks, and best practices.
                                     </p>
                                 </div>
                             </div>
 
                             <p className="text-gray-300">
-                                When working on projects, I prioritize clear communication, timely delivery, and
-                                exceeding expectations. I enjoy collaborating with teams to solve complex problems
-                                and create exceptional digital experiences that make an impact.
+                                I believe in honest communication, reliable delivery, and going the extra mile. Whether collaborating with teams or clients, I bring clarity, speed, and a shared drive to create digital products that truly matter.
+
                             </p>
                         </div>
                     </div>

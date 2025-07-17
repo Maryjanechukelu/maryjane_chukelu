@@ -9,15 +9,35 @@ const AnimatedText = ({
     className = '',
     speed = 150,       // Typing speed (ms)
     pause = 2000,      // Pause time before deleting (ms)
+    delay = 0,         // Add this: Initial delay before starting animation
     ...props
 }) => {
     const [displayedText, setDisplayedText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [index, setIndex] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false); // Add this state
     const mountedRef = useRef(true);
+
+    // Add initial delay effect
+    useEffect(() => {
+        if (delay > 0) {
+            const delayTimer = setTimeout(() => {
+                if (mountedRef.current) {
+                    setHasStarted(true);
+                }
+            }, delay);
+
+            return () => clearTimeout(delayTimer);
+        } else {
+            setHasStarted(true);
+        }
+    }, [delay]);
 
     useEffect(() => {
         mountedRef.current = true;
+
+        // Don't start animation until delay is over
+        if (!hasStarted) return;
 
         let timer;
 
@@ -51,9 +71,8 @@ const AnimatedText = ({
             clearTimeout(timer);
             mountedRef.current = false;
         };
-    }, [text, index, isDeleting, speed, pause]);
+    }, [text, index, isDeleting, speed, pause, hasStarted]); // Add hasStarted dependency
 
-    // You used "tag" prop => dynamic container tag (like span, h1 etc.)
     const Container = tag;
 
     return (
@@ -62,7 +81,7 @@ const AnimatedText = ({
             {...props}
         >
             {displayedText}
-            <span className="animate-blink">|</span> {/* Blinking cursor */}
+            <span className="animate-blink">|</span>
         </Container>
     );
 };
